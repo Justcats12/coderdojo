@@ -34,7 +34,7 @@ We willen ons programma 5 keer herhalen, en als de speler het juist heeft moet h
 # Voorgaande code...
 
 for i in range(5):
-    guess = input("Guess number: ")
+    guess = int(input("Guess number: "))
 
 ```
 
@@ -44,7 +44,7 @@ Zo vragen we 5 keer aan de gebruiker voor een getal, dit getal stoppen we telken
 # Voorgaande code...
 
 for i in range(5):
-    guess = input("Guess number: ")
+    guess = int(input("Guess number: "))
 
     if guess == number:
         print("Correct!")
