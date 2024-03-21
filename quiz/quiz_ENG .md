@@ -93,7 +93,7 @@ Finaly we have to make sure the player loses a life afer getting an answer wrong
 # for
     # while
         if not correct:
-            lives -=1
+            lives -= 1
             print("Wrong, try again")
 ```
 
