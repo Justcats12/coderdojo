@@ -1,9 +1,3 @@
-<style>
-    code{
-    color: gray;
-}
-</style>
-
 # Blad-Steen-Schaar
 
 ### gevorderd
