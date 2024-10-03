@@ -103,7 +103,7 @@ choice = prompt()
 computer = choose()
 
 while (choice == computer):
-    print(f"{choice} vs {computer}! It's a draw, try again!")
+    print(f"{choice} vs {computer}! It's a tie, try again!")
     choice, computer = prompt(), choose()
 
 # check winner
