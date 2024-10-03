@@ -1,8 +1,6 @@
 import time
-now = time.time()
-
-ctr = 0
-while now + 1 > time.time():
-    ctr += 1
-print(ctr)
+n,c=time.time(),0
+while n + 1 > time.time():
+    c+=1
+print(c)
 
