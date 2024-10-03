@@ -1,3 +1,9 @@
+<style>
+    code{
+    color: gray;
+}
+</style>
+
 # Blad-Steen-Schaar
 
 ### gevorderd
@@ -8,7 +14,7 @@ Je kent zeker het spelletje blad-steen-schaar. Maar je hebt hier twee spelers vo
 
 De computer zal een random optie kiezen, dus import alvast `random`. We zullen alle opties ook in een list steken, waaruit de computer zal kiezen. We zullen de woorden ook afkorten. (Rock = r, paper = p, scissors = s)
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]
@@ -18,7 +24,7 @@ computer = options[random.randint(0,2)]
 
 Als volgt zullen we aan de speler vragen voor een optie. We moeten er wel voor zorgen dat die niet iets verkeerds ingeeft.
 
-```py
+```python
 # import
 # options = ...
 
@@ -44,7 +50,7 @@ Deze functie vraagt om invoer, checkt of deze goed is voor de ingegeven letter t
 
 we zullen eerst nakijken of er geen gelijk spel is, pas daarna kunnen we beslissen wie is gewonnen.
 
-```py
+```python
 # voorgaande code
 
 while computer == choice:
@@ -58,7 +64,7 @@ while computer == choice:
 
 Nu zullen we checken wie is gewonnen. We maken eerst een nieuwe list die toont welke optie tegen welke wint. Dus als `options[0]` -> `"r"`, dan moet `winsAgainst[0]` -> `"p"`
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]
@@ -67,7 +73,7 @@ winsAgainst = ["p", "s", "r"]
 
 Ten laatste doen we de check wie er is gewonnen.
 
-```py
+```python
 # voorgaande code...
 
 print(f"{choice} vs {computer}!")
@@ -82,7 +88,7 @@ else:
 
 ## Volledige code
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]

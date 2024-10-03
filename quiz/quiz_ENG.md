@@ -8,7 +8,7 @@ In this project we'll make a quiz, of which you can choose the questions! The pl
 
 We'll start with setting up the questions and answers. For this we'll use a _dictionary_ like shown here.
 
-```py
+```python
 quiz = {
     "In what language is this program?": "python",
     "What's the file extention for python files?": ".py",
@@ -21,7 +21,7 @@ You can of course make your own questions.
 
 Now we'll go over every question and ask the player for the answer. For this we'll use a `for`-loop. After we'll ask the player the answer and store it in the vareable `answer`.
 
-```py
+```python
 # quiz = ...
 
 for question in quiz:
@@ -31,7 +31,7 @@ for question in quiz:
 
 Now we can compare `answer` to the correct answer, which we'll find in `quiz[question]`.
 
-```py
+```python
 #for
     print(question)
     answer = input("Answer: ")
@@ -45,7 +45,7 @@ Now we can compare `answer` to the correct answer, which we'll find in `quiz[que
 
 As long as the answer is incorrect we'll keep repeating the question. For this we need a second kind of loop, a `while`-loop. We'll also show a message when the user isn't right.
 
-```python
+```pythonthon
 #for:
     correct = False
     while not correct:
@@ -62,7 +62,7 @@ As long as the answer is incorrect we'll keep repeating the question. For this w
 
 Now we'll make sure the player has 3 lives, and can give 3 wrong answers. If the player has no remaining lives, they'll be thrown out of the program. We'll start by setting a new vareable called `lives`and making its value 3.
 
-```py
+```python
 # quiz = {...}
 
 lives = 3
@@ -72,7 +72,7 @@ lives = 3
 
 Now we'll modify the while-loop so the user can't keep answering after losing all their lives.
 
-```py
+```python
 #for ... :
     correct = False
     while not correct and lives > 0:
@@ -89,7 +89,7 @@ else:
 
 Finaly we have to make sure the player loses a life afer getting an answer wrong.
 
-```py
+```python
 # for
     # while
         if not correct:
@@ -99,7 +99,7 @@ Finaly we have to make sure the player loses a life afer getting an answer wrong
 
 ## Volledige code
 
-```py
+```python
 quiz = {
     "In welke taal is dit geschreven": "python",
     "Welke extensie gebruiken python bestanden?": ".py",

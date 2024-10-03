@@ -8,7 +8,7 @@ In dit project maken we een quiz, waarvan de de vragen zelf mag kiezen! De spele
 
 We beginnen met de vragen en antwoorden op te stellen. We doen dit in een _dictionairy_ op de volgende manier.
 
-```py
+```python
 quiz = {
     "In welke taal is dit geschreven": "python",
     "Welke extensie gebruiken python bestanden?": ".py",
@@ -21,7 +21,7 @@ De vragen mag je natuurlijk zelf kiezen.
 
 Nu gaan elke vraag overlopen en de speler om een antwoord vragen. Hiervoor gebruiken we een `for`-lus. Daarna vragen we de speler voor het antwoord. We houden het antwoord bij in het vareabele `answer`.
 
-```py
+```python
 # quiz = ...
 
 for question in quiz:
@@ -31,7 +31,7 @@ for question in quiz:
 
 Nu kunnen we `answer` vergelijken met het juiste antwoord, wat we vinden in `quiz[question]`.
 
-```py
+```python
 #for
     print(question)
     answer = input("Answer: ")
@@ -45,7 +45,7 @@ Nu kunnen we `answer` vergelijken met het juiste antwoord, wat we vinden in `qui
 
 Zolang het antwoord fout is blijven we het herhalen. Hiervoor gebruiken we een andere soort lus, de `while`-lus. We zullen ook een gepast bericht tonen aan de gebruiker als hij het fout heeft.
 
-```python
+```pythonthon
 #for:
     correct = False
     while not correct:
@@ -62,7 +62,7 @@ Zolang het antwoord fout is blijven we het herhalen. Hiervoor gebruiken we een a
 
 Nu zullen we zorgen dat de speler 3 levens heeft, en dus 3 foute antwoorden kan geven. Als de speler geen levens meer heeft, wordt hij uit het programma gestuurd. We beginnen alvas met in het begin een nieuw vareabele te maken `levens` en het op 3 te zetten.
 
-```py
+```python
 # quiz = {...}
 
 lives = 3
@@ -72,7 +72,7 @@ lives = 3
 
 We zullen nu de while lus aanpassen zodat de speler niet verder kan antwoorden als hij geen levens meer heeft.
 
-```py
+```python
 #for ... :
     correct = False
     while not correct and lives > 0:
@@ -89,7 +89,7 @@ else:
 
 Als laatste moeten we er nog voor zorgen dat de speler een leven verliest als hij verkeerd antwoord.
 
-```py
+```python
 # for
     # while
         if not correct:
@@ -99,7 +99,7 @@ Als laatste moeten we er nog voor zorgen dat de speler een leven verliest als hi
 
 ## Volledige code
 
-```py
+```python
 quiz = {
     "In welke taal is dit geschreven": "python",
     "Welke extensie gebruiken python bestanden?": ".py",

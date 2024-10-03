@@ -8,7 +8,7 @@ You probably know the game of rock-paper-scissors. But sadly you need two player
 
 The computer will choose a random option, so certainly import `random`. We'll put all the options in a list, from which the computer shall choose. Note that for this program we're abreviating the words. (Rock = r, paper = p, scissors = s)
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]
@@ -18,7 +18,7 @@ computer = options[random.randint(0,2)]
 
 Now we'll ask the player for their choice. Make sure they don't give in an invalid option.
 
-```py
+```python
 # import
 # options = ...
 
@@ -44,7 +44,7 @@ This function asks for input, checks if it's correct before returning the given 
 
 Now we'll check if there's no draw before checking if anyone won.
 
-```py
+```python
 # previous code
 
 while computer == choice:
@@ -58,7 +58,7 @@ while computer == choice:
 
 We'll check for the winner. First off we'll make a new list that shows us which option beats which. For example, if `options[0]` -> `"r"`, then `winsAgainst[0]` -> `"p"`
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]
@@ -67,7 +67,7 @@ winsAgainst = ["p", "s", "r"]
 
 Now we can easily check for who won.
 
-```py
+```python
 # Previous code...
 
 print(f"{choice} vs {computer}!")
@@ -82,7 +82,7 @@ else:
 
 ## Entire code
 
-```py
+```python
 import random
 
 options = ["r", "p", "s"]

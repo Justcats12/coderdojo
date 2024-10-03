@@ -40,7 +40,7 @@ for i in range(5):
 
 Zo vragen we 5 keer aan de gebruiker voor een getal, dit getal stoppen we telkens in `guess`. Hoe checken we nu of het juist is? Met een `if`-statement natuurlijk!
 
-```py
+```python
 # Voorgaande code...
 
 for i in range(5):
@@ -57,7 +57,7 @@ Om twee waarden de vergelijken, gebruiken we `==`, één gelijkheidsteken is enk
 
 Nu hebben we een spelletje waarbij de gebruiker een getal moet raden. Maar dit is niet hoger lager... We hebben nog wat ifs en elses nodig. Als we een tweede if statement willen toevoegen, gebruiken we `elif`. `else` gebruiken we pas als laatst, als er geen andere mogelijkheid meer overschiet.
 
-```py
+```python
 #for ...
     # ...
     if guess == number:
@@ -71,7 +71,7 @@ Nu hebben we een spelletje waarbij de gebruiker een getal moet raden. Maar dit i
 
 Uiteindelijk kunnen we ook aan de for-lus een `else` toevoegen. De code die onder deze `else` komt activeert enkel als de for-lus sucessvol eindigd. Anders gezegd, als deze niet onderbroken wordt door een `break`.
 
-```py
+```python
 for i in range(5):
     # code ...
 else:
@@ -80,7 +80,7 @@ else:
 
 ## Voledige code
 
-```py
+```python
 import random
 
 print("Let's play a game")

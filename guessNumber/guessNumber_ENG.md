@@ -30,7 +30,7 @@ for i in range(10):
 
 Now, we want to repeat our program 5 times. And when the player guesses correctly it has to stop the loop. If this were scratch it'd get complicated, but luckily it's not.
 
-```py
+```python
 # Previous code...
 
 for i in range(5):
@@ -40,7 +40,7 @@ for i in range(5):
 
 This is how we ask the player 5 times for a number, we'll put this number in `guess`. But how do we check if it's correct or not? With `if`-statements of course!
 
-```py
+```python
 # Previous code...
 
 for i in range(5):
@@ -57,7 +57,7 @@ To compare two values we use `==`, one equal sign is only used to store a value 
 
 Now we have a game where the player has to guess a number. This isn't higher-lower... We need some more ifs and elses. If we wanna add a second statement to our `if`-statement, we use `elif`. We use `else` when no other possibilities remain.
 
-```py
+```python
 #for ...
     # ...
     if guess == number:
@@ -71,7 +71,7 @@ Now we have a game where the player has to guess a number. This isn't higher-low
 
 We can also add an `else` to our for-loop. The code under this `else` will only activate if the for-lus ends succesfully. So if no `break` was used to interupt it.
 
-```py
+```python
 for i in range(5):
     # code ...
 else:
@@ -80,7 +80,7 @@ else:
 
 ## Complete code
 
-```py
+```python
 import random
 
 print("Let's play a game")
