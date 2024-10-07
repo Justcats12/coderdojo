@@ -54,7 +54,7 @@ Zolang het antwoord fout is blijven we het herhalen. Hiervoor gebruiken we een a
 
         correct = (answer == quiz[question])
 
-        if not corrcect:
+        if not correct:
             print("Wrong.")
 ```
 
