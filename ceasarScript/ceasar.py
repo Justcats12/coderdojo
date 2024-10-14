@@ -11,7 +11,7 @@ def get_rot13(char):
        index -= 26
 
     return ALPHABET[index]
-input_string = "python is fantastisch"
+input_string = "bubbles"
 output = ""
 for c in input_string:
     output += get_rot13(c)

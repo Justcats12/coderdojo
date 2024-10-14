@@ -12,11 +12,11 @@ Python kent het alfabet niet vanbuiten. We moeten dit in een vareabele steken.
 ALPHABET = "abcdefghijklmnopqrstuvwxyz"
 ```
 
-Dit zullen we gebruiken om het algabet te shiften.
+Dit zullen we gebruiken om het alfabet te shiften.
 
 ## Stap 2
 
-Nu kunnen we beginnen aan een funcie waarmee we een karkater 13 plaatsen kunnen opschuiven. Deze functie werkt als een zelfgemaakt blok in python die we later kunnen oproepen.
+Nu kunnen we beginnen aan een funcie waarmee we een karkater 13 plaatsen kunnen opschuiven. Deze functie werkt als een zelfgemaakt blok in scratch die we later kunnen oproepen.
 
 ```python
 def schuif_op(karakter):
@@ -31,6 +31,10 @@ def schuif_op(karakter):
 ```
 
 Probeer nu onder de code het volgende uit te voeren en je zal een error krijgen zoals deze:
+
+```python
+schuif_op("oogabooga")
+```
 
 ```
 Traceback (most recent call last):
@@ -76,7 +80,7 @@ def schuif_op(karakter):
     return ALPHABET[index]
 ```
 
-Probeer nu eens `schuif_op(a)` en je zou de letter n moeten krijgen, maar als je `schuif_op(t)` uitvoert zal je de volgende error krijgen:
+Probeer nu eens `schuif_op("a")` en je zou de letter n moeten krijgen, maar als je `schuif_op("t")` uitvoert zal je de volgende error krijgen:
 
 ```
 Traceback (most recent call last):
@@ -94,6 +98,8 @@ Daarom moeten we nog een check doen, als de index 26 of hoger is moeten 26 van d
     if index >= 26:
        index -= 26
 ```
+
+Probeer nu nog eens wat we daarnet hebben geprobeert en het zou moeten werken.
 
 ## Stap 4
 
