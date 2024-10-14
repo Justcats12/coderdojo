@@ -114,12 +114,18 @@ print("Gegenereerd watchwoord:", random_wachtwoord)
 
 In deel 2 berekenen we hoe lang het duurt om het wachtwoord te kraken.
 
+## Oefeningen voor gevorderden
+
+1. Hoe voeg ik extra karaters toe zoals `%` en `^` toe?
+
+2. (moeilijk) Meeste websites willen dat je minstens één van elke soort (hoofdletter, kleine letter, getal, speciaal teken) gebruikt. Kun je ervoor zorgen dat dit telkens in het wachtwoord zit.
+
 ## Volledige code
 
 ```python
 import random
 
-ALLOWED_CHARS = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789*+-*/!?.,;:&="
+ALLOWED_CHARS = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789*+-/!?.,;:&="
 
 def generate_password(lenght):
     password = ""

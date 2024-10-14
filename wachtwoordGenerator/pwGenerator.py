@@ -1,6 +1,6 @@
 import random
 
-ALLOWED_CHARS = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789*+-*/!?.,;:&="
+ALLOWED_CHARS = "azertyuiopqsdfghjklmwxcvbnAZERTYUIOPQSDFGHJKLMWXCVBN0123456789*+-/!?.,;:&="
 
 def generate_password(lenght):
     password = ""
