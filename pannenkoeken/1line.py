@@ -1,0 +1,1 @@
+pancakeAmount = min(int(input("Amount of eggs: "))*4, int(input("ml milk: "))//30, int(input("grammes of flour: "))//12.5); print({True: "Not enough for pancakes!", False: f"You can make {pancakeAmount} pancake(s)"}[pancakeAmount < 1])
