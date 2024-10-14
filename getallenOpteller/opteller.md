@@ -146,7 +146,7 @@ def optellengetallen(getal):
 Test dit nu uit met door de onderstaande code toe te voegen
 
 ```python
-print(optellengetallen(getal))
+print(optellengetallen(nummer))
 ```
 
 Normaal zou er 45 in de terminal moeten komen.
