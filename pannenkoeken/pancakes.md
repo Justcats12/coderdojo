@@ -18,7 +18,7 @@ Maar nu doen we er niets mee... We moeten het opslaan in een vareabele.
 eieren = input("Hoeveel eieren heb je? ")
 ```
 
-Deze vareabele kunnen we nu printen. Als je een f voor de aanhalingteken zet zal de code alles tussen { } zelf invullen.
+Deze vareabele kunnen we nu printen. Als je een f voor de aanhalingtekens (") zet zal de code alles tussen { } zelf invullen.
 
 ```python
 eieren = input("Hoeveel eieren heb je? ")
@@ -128,7 +128,7 @@ else:
 
 4. (GEVORDERD) Herschrijf de code in max. 4 lijnen
 
-5. (EXTA GEVORDERD) Gerschrijf de code in 1 lijn.
+5. (EXTA GEVORDERD) Herschrijf de code in 1 lijn.
 
 ## Voorbeeldcode
 
