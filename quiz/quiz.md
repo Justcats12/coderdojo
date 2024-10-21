@@ -45,7 +45,7 @@ Nu kunnen we `answer` vergelijken met het juiste antwoord, wat we vinden in `qui
 
 Zolang het antwoord fout is blijven we het herhalen. Hiervoor gebruiken we een andere soort lus, de `while`-lus. We zullen ook een gepast bericht tonen aan de gebruiker als hij het fout heeft.
 
-```pythonthon
+```python
 #for:
     correct = False
     while not correct:
