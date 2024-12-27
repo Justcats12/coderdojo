@@ -2,7 +2,7 @@
 
 ### Advanced
 
-Around 100 v.C. Julius Ceasar invented a secret language. He shifted the alphabet by three letters so his enemies wouldn't understand his letters. A -> D, B -> E, F -> I ... More than 2000 years later this system is still used in encryption, only today we shift the alphabet 13 letters.
+Around 100 b.C. Julius Ceasar invented a secret language. He shifted the alphabet by three letters so his enemies wouldn't understand his letters. A -> D, B -> E, F -> I ... More than 2000 years later this system is still used in encryption, only today we shift the alphabet 13 letters.
 
 ## Step 1
 

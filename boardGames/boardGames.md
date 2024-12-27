@@ -1,0 +1,185 @@
+# Boardgame shop
+
+### Professional: Easy
+
+The goal of this lesson is to create an application for a board game store that lets us create and look up board games in different ways. The special feature of this application is to find a board game for a group of people according to the size of the group and how much time they have.
+
+# Domain
+
+The domain has two classes, `Boardgame` and `BoardgameShop`. The `Boardgame` class keeps track of the information about a boardgame and only has `__repr__` and `__str__` functions. The `BoardgameShop` class is a repository of boardgames that allows us so search and filter in different ways.
+
+### repr and str?
+Python classes have special functions that you can set to help with certain clauses. Two of these are `__repr__` (represent) and `__str__` (stringify). When defining both functions it is obligated to return a string item. The only difference between the 2 methods, is that `__repr__` is for robots and tech people (and all those in between). The `__str__` function is for normal people, e.g. someone's grandma.
+
+tl,dr: `__str__` -> human readable output; `__repr__` -> computer readable output
+
+Here's an example:
+```python
+class Ball:
+    color = "red"
+    radius = 10
+
+    def __repr__(self):
+        return f"Ball(color=\"{self.color}\",radius={self.radius})"
+        # Ball(color="red",radius=10)
+
+    def __str__(self):
+        return f"{self.color.capitalize()} ball with radius {self.radius}cm"
+        # Red ball with radius 10cm
+```
+
+## Step 1
+
+Start with the `boardgame` class, it has 4 properties, name, maximum players, minimum players and time to play, which is 30 minutes by default. The `__init__` function includes all of the properties
+
+```python
+class Boardgame:
+    def __init__(self, name : str, minPlayers : int, maxPlayers : int, time : int = 30):
+        self.name = name
+        self.minPlayers = minPlayers
+        self.maxPlayers = maxPlayers
+        self.time = time
+```
+
+You can test if everything is working by making trying to make a Boardgame `b1` and testing if you can print all the properties
+
+```python
+# Testcode
+b1 = Boardgame("abc", 1, 4, 15)
+print(b1.name, b1.minPlayers) #...
+```
+## Step 2
+
+Next we'll check if the properties are set correctly, any time or player amount of 0 or lower is invalid, and the maximum player amount has to be greater or equal to the minimum amount.
+
+```python
+class Boardgame:
+    def __init__(self, name : str, minPlayers : int, maxPlayers : int, time : int = 30):
+        assert minPlayers > 0, "Boardgame must need at least one player"
+        assert minPlayers <= maxPlayers, "Max amount of players must be higher than min amount of players"
+        assert time > 0, "Game cannot take 0 or less time to play"
+        
+        self.name = name
+        self.minPlayers = minPlayers
+        # ...
+```
+
+You can test this code by trying to make every type of incorrect Boardgame. Each one of the following should now cause an assertionerror.
+
+```python
+# testcode
+b1 = Boardgame("A", -1, 2, 15)
+b2 = Boardgame("B", 3, 2, 80)
+b3 = Boardgame("C", 2, 4, 0)
+```
+
+## Step 3
+
+Now make a `__repr__` function, this should return a string with every property as well as the class name. For example: 
+
+`Boardgame(name="Uno",minPlayers=2,maxPlayers=4,time=15)`
+
+You can check if it works with the following testcode:
+
+```python
+# testcode
+b1 = Boardgame("Uno", 2, 4, 15)
+print(repr(b1))
+# Boardgame(name="Uno",minPlayers=2,maxPlayers=4,time=15)
+```
+
+Try to make this yourself before looking at the answer. You can find the answer below to check if you did it right.
+
+```python
+    def __repr__(self):
+        return f"Boardgame(name=\"{self.name}\",minPlayers={self.minPlayers},maxPlayers={self.maxPlayers},time={self.time})"
+```
+
+## Step 4
+
+Now try something similar with the `__str__` function. There only difference is that, if the time is over an hour the output is differnt, here are examples:
+
+- Time under 1 hour: "Boardgame Uno, 2-4 players, 15 min playtime"
+- Time over 1 hour: "Boardgame Monoploly, 2-6 players, 2:30 hrs playtime"
+
+You can test it with the following testcode:
+
+```python
+# testcode
+b1 = Boardgame("Uno", 2, 4, 15)
+print(b1)
+# BoardBoardgame Uno, 2-4 players, 15 min playtimegame 
+b2 = Boardgame("Monoploly", 2, 6, 150)
+print(b2)
+# Boardgame Monoploly, 2-6 players, 2:30 hrs playtime
+```
+
+You can use either a normal if statement or a ternary if statement e.g.
+
+```python
+variable = value_when_true if condition else value_when_false
+```
+
+Try to write the code yourself, if you can fit it within 4-8 lines and it works that's good. If you need help here's the solution:
+
+```python
+    def __str__(self):
+        hours = self.time // 60
+        minutes =  self.time % 60
+        time = f"{hours}:{minutes} hrs" if hours > 0 else f"{minutes} min"
+        return f"Boardgame {self.name}, {self.minPlayers}-{self.maxPlayers} players, {time} playtime"
+```
+
+Now you're done with the `boardgame` class.
+
+## Step 5
+
+Now it's time for the `BoardgameShop` class, the only property it has is a list of strictly boardgames, as an extra you can make an assertion if the list given in the `__init__` is strictly boardgames. Go ahead and make the `__init__` 
+
+```python
+class BoardgameShop():
+    def __init__(self, games : list[Boardgame]):
+        self.games = games
+```
+
+## Step 6
+
+Write a function that adds a boardgame to the list of boardgames. It first checks if the item being added is actually an instance of `Boardgame`, for this you can use the built-in `isinstance()` function.
+
+```python
+    def addBoardgame(self, game : Boardgame):
+        assert isinstance(game, Boardgame), "New item must be a boardgame"
+        self.games.append(game)
+```
+
+Test if everything is working by adding a Boardgame to the list and printing the list, then try to add something that isn't a board game, e.g. a string to the shop.
+
+```python
+# testcode
+bgs = BoardgameShop([])
+bgs.addBoardgame(Boardgame("A", 2, 4, 15))
+print(bgs.games)
+# prints list with the new board game in it
+bgs.addBoardgame("hello")
+# throws assertionerror
+```
+
+## Step 7
+
+Now we'll add the first search function `findGameByName` which will find a boardgame by name. Use a for loop for this and return the first boardgame where the name is equal to the string (given as parameter). If it doesn't find anything it should return `None` instead.
+
+Make a shop with 2-3 boardgames and see if it returns the correct one, you can use `print(bgs.findGameByName("name"))`. Since the `Boardgame` class has a `__str__` function it should print the human readable version of boardgame.
+
+Try to make this yourself, the function should be 6-12 lines long. Don't forget to write a description fot this function.
+
+```python
+    def findGameByName(self, name : str):
+        """Find a boardgame in this shop by name, returns the first boardgame it finds with the given name, returns None if nothing was found"""
+        for g in self.games:
+            if g.name == name:
+                return g
+        
+        return None
+```
+
+## Step 8
