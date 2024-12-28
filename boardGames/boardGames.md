@@ -318,3 +318,224 @@ Time to play (minutes): 20
 ```
 
 As an extra you can make a helper function for inputting numbers, the function tries again after the user attempted an invalid input.
+
+```python
+def addGame():
+    name = input("Name: ")
+    minPlayers = inputNumber("Minumum player amount: ")
+    maxPlayers = inputNumber("Maxumum player amount: ")
+    time = inputNumber("Time to play (minutes): ")
+    bgs.addBoardgame(Boardgame(name, minPlayers, maxPlayers, time))
+```
+
+## Step 3
+
+Start by making a new `BoardgameShop` object and saving it to a variable `bgs`. All of the following should come ABOVE the while loop in the code
+
+```python
+bgs = BoardgameShop([])
+
+# code comes here
+
+# while...
+```
+
+Now implement all the other uptions into the cui in similar ways. Use inputs to ask for the different parameters and print the boardgames to the console. Since the `Boardgame` object has a `__str__` function this shouldn't be hard.
+
+For the `findByName` function, check if `None` was returned, if so this means that there was no board game with that name found. Print a fitting message.
+
+For the `findByPlayers` function, multiple answers are possible, so you have to iterate over every answer and print it in a numbered way.
+
+```
+1) Boardgame Uno, 2-6 players, 15 min playtime
+2) Boardgame Scyte, 2-6 players, 1:0 hrs playtime
+3) Boardgame Wingspan, 2-4 players, 30 min playtime
+```
+Try to make these functions yourself, if you want to check if you did it correctly or if you need help here's the example.
+
+```python
+def findGameByName():
+    name = input("Enter name: ")
+    game = bgs.findGameByName(name)
+
+    if game is None:
+        print("404 game not found")
+    else:
+        print(game)
+    
+
+def findGamesByPlayerAmount():
+    players = inputNumber("Player amount: ")
+    games = bgs.findGamesByPlayers(players)
+
+    for i,g in enumerate(games):
+        print(f"{i+1}) {g}")
+
+def findPerfectGame():
+    players = inputNumber("Player amount: ")
+    time = inputNumber("Time available: ")
+
+    game = bgs.findPerfectGame(players, time)
+
+    print(game)
+
+# while...
+```
+
+# Extra
+
+The instructions included some extras:
+
+1) Assert if all objects entered into a new `BoardgameShop` are of the instance `Boardgame` (in one line).
+2) Make a helper function for inputting numbers using a try-except block.
+
+Extras not mentioned in instructions
+
+3) Make the cui completely robust, with try-execpt blocks anywhere where an exception can take place.
+4) Add a function to the `BoardgameShop` class `findByTimeLimit`, that is similar to `findPerfectGame`, except it excludes all games that are above the given time. Implement it into the cui as well.
+
+# Entire code
+
+If your code should be working properly, but it isn't you can check the full code here to see if you misplaced/forgot something
+
+```python
+#
+# Domain
+#
+class Boardgame:
+    def __init__(self, name : str, minPlayers : int, maxPlayers : int, time : int = 30):
+        assert minPlayers > 0, "Boardgame must need at least one player"
+        assert minPlayers <= maxPlayers, "Max amount of players must be higher than min amount of players"
+        assert time > 0, "Game cannot take 0 or less time to play"
+        
+        self.name = name
+        self.minPlayers = minPlayers
+        self.maxPlayers = maxPlayers
+        self.time = time
+    def __repr__(self):
+        return f"Boardgame(name=\"{self.name}\",minPlayers={self.minPlayers},maxPlayers={self.maxPlayers},time={self.time})"
+    def __str__(self):
+        hours = self.time // 60
+        minutes =  self.time % 60
+        time = f"{hours}:{minutes} hrs" if hours > 0 else f"{minutes} min"
+        return f"Boardgame {self.name}, {self.minPlayers}-{self.maxPlayers} players, {time} playtime"
+
+class BoardgameShop():
+    def __init__(self, games : list[Boardgame]):
+        assert all([isinstance(i, Boardgame) for i in games]), "All objects must be boardgame" # extra
+        self.games = games
+    
+    def addBoardgame(self, game : Boardgame):
+        assert isinstance(game, Boardgame), "New item must be a boardgame"
+        self.games.append(game)
+    
+    def findGameByName(self, name : str):
+        """Find a boardgame in this shop by name, returns the first boardgame it finds with the given name, returns None if nothing was found"""
+        for g in self.games:
+            if g.name == name:
+                return g
+        
+        return None
+    
+    def findGamesByPlayers(self, players : int):
+        """Returns a list of games that can be played by the given amount of players"""
+        output = []
+
+        for g in self.games:
+            if g.minPlayers <= players <= g.maxPlayers:
+                output.append(g)
+        
+        return output
+    
+    def findPerfectGame(self, players : int, time : int):
+        """Returns a game that can be played by the amount of players and is closest to the given time
+        
+        Throws exception if no games were found
+        """
+
+        games = self.findGamesByPlayers(players)
+
+        assert len(games) > 0, "No games found for the amount of players"
+        if len(games) == 1:
+            return games[0]
+        
+        bestGame = games[0]
+
+        for g in games[1:]:
+            if abs(time - g.time) < abs(time - bestGame.time):
+                bestGame = g
+        
+        return bestGame
+
+#
+# Cui
+#
+
+bgs = BoardgameShop([]) 
+
+def inputNumber(prompt : str): # extra
+    num = input(prompt)
+    try:
+        return int(num)
+    except:
+        print(f"{num} is not a valid input, please enter a number.")
+        inputNumber(prompt)
+
+def addGame():
+    name = input("Name: ")
+    minPlayers = inputNumber("Minumum player amount: ")
+    maxPlayers = inputNumber("Maxumum player amount: ")
+    time = inputNumber("Time to play (minutes): ")
+    bgs.addBoardgame(Boardgame(name, minPlayers, maxPlayers, time))
+
+
+def findGameByName():
+    name = input("Enter name: ")
+    game = bgs.findGameByName(name)
+
+    if game is None:
+        print("404 game not found")
+    else:
+        print(game)
+    
+
+def findGamesByPlayerAmount():
+    players = inputNumber("Player amount: ")
+    games = bgs.findGamesByPlayers(players)
+
+    for i,g in enumerate(games):
+        print(f"{i+1}) {g}")
+
+def findPerfectGame():
+    players = inputNumber("Player amount: ")
+    time = inputNumber("Time available: ")
+
+    game = bgs.findPerfectGame(players, time)
+
+    print(game)
+
+keepGoing = True
+while keepGoing:
+    print("""
+Type the number of the option you want to do
+1) add a game
+2) find game by name
+3) find games by player amount
+4) find perfect game
+5) exit
+    """)
+    option = input("Option: ")
+    match option:
+        case "1":
+            addGame()
+        case "2":
+            findGameByName()
+        case "3":
+            findGamesByPlayerAmount()
+        case "4":
+            findPerfectGame()
+        case "5":
+            keepGoing = False
+        case _:
+            print("Invalid option, please enter the number corresponding to an option.")
+```
