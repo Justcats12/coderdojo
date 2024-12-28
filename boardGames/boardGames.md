@@ -183,3 +183,138 @@ Try to make this yourself, the function should be 6-12 lines long. Don't forget 
 ```
 
 ## Step 8
+
+The next search function `findGamesByPlayers` is a filter that looks for all the games that can be played by a given amount of players. The amount of players is given as a parameter. Then you check if it's not under the minimum player amount and over the maximum amount. Don't forget a description.
+
+You can test this code by creating a `BoardgameShop` item and adding a few `Boardgame` items, then testing if a player count returns the correct items.
+
+```python
+# testcode
+b1 = Boardgame("A", 2, 4, 10)
+b2 = Boardgame("B", 1, 2)
+b3 = Boardgame("C", 3, 4, 45)
+bgs = BoardgameShop([b1, b2, b3])
+print(bgs.findGamesByPlayers(3))
+# A, C
+print(bgs.findGamesByPlayers(2))
+# A, B
+```
+
+Try to make the function yourself in 6-10 lines, start by making a new empty array, then append all boardgames where the player count fits. The return the new array.
+
+If you can't figure it out you can use the example:
+
+```python
+    def findGamesByPlayers(self, players : int):
+        """Returns a list of games that can be played by the given amount of players"""
+        output = []
+
+        for g in self.games:
+            if g.minPlayers <= players <= g.maxPlayers:
+                output.append(g)
+        
+        return output
+```
+
+## Step 9
+
+We'll use this function in our next function `findPerfectGame` which finds a game returned by the previous function but closest to the given time. The player count and time are given by parameters. Start with making a new array that is equal to `self.findGamesByPlayers(players)`. Check if this array is empty first with an assertion. Don't forget a description.
+
+Iterate over the new array and use the built in `abs()` function to check which game comes closest to the given time. The below function can be used to calculate how close two times are. The lower the number, the closer.
+
+> |time1 - time2|
+
+Try to do it yourself from here. If you need help here's some hints:
+
+1) set the first best match to the first game in the list, then iterate over the rest
+2) The condition `abs(time - g.time) < abs(time - bestGame.time)` must be true to set the next best match
+
+If you can't figure it out with these hints, or want to check if your code is correct here's the example. Note that there were no instructions to return the first game if there's only one game, but this can make the code 
+
+```python
+    def findPerfectGame(self, players : int, time : int):
+        """Returns a game that can be played by the amount of players and is closest to the given time
+        
+        Throws exception if no games were found
+        """
+
+        games = self.findGamesByPlayers(players)
+
+        assert len(games) > 0, "No games found for the amount of players"
+        if len(games) == 1:
+            return games[0]
+        
+        bestGame = games[0]
+
+        for g in games[1:]:
+            if abs(time - g.time) < abs(time - bestGame.time):
+                bestGame = g
+        
+        return bestGame
+
+```
+
+The domain is now finished and we can start working on the cui.
+
+# CUI
+
+The cui or console user interface can be used to do 4 things.
+1) Add a boardgame to the store
+2) Search by name
+3) Find games by amount of players
+4) Find perfect game
+
+## Step 1
+
+The menu should look like this, and the user inputs the number of the option they want to do.
+
+```
+Type the number of the option you want to do
+1) add a game
+2) find game by name
+3) find games by player amount
+4) find perfect game
+5) exit
+```
+
+This menu should be in a while loop with a match case, each option should be put in a separate function.
+
+```python
+keepGoing = True
+while keepGoing:
+    print("""
+Type the number of the option you want to do
+1) add a game
+2) find game by name
+3) find games by player amount
+4) find perfect game
+5) exit
+    """)
+    option = input("Option: ")
+    match option:
+        case "1":
+            addGame()
+        case "2":
+            findGameByName()
+        case "3":
+            findGamesByPlayerAmount()
+        case "4":
+            findPerfectGame()
+        case "5":
+            keepGoing = False
+        case _:
+            print("Invalid option, please enter the number corresponding to an option.")
+```
+
+## Step 2
+
+When the user inputs 1 they should be asked for 4 things, the name (str), min player amount (int), max player amount (int), time (int). The experience should look something like this.
+
+```
+Name: Ludo
+Minumum player amount: 2
+Maxumum player amount: 4
+Time to play (minutes): 20
+```
+
+As an extra you can make a helper function for inputting numbers, the function tries again after the user attempted an invalid input.
